@@ -1,41 +1,24 @@
 console.log("run");
 
-//var map = document.getElementById("map"),
-//    ctx = map.getContext('2d');
-//    map.width = 100;
-//    map.height = 100;
-//
-//
-//var cellSize = 32;
-////var $cellTemplate = $("<span />").addClass("cell").width(cellSize).height(cellSize);
-//var temp = 10;
-//
-//for (var r=0; r<temp; r++){
-//
-//    for (var c=0; c<temp; c++){
-//
-//    }
-//}
-//
-//ctx.fillRect(0, 0, 10, 10);
+var map = document.getElementById("map"),
+    ctx = map.getContext("2d");
 
-var canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext('2d');
-canvas.width = 400;
-canvas.height = 400;
+    map.width = window.innerWidth;
+    map.height = window.innerHeight;
+    map.x = 50;
 
-x = {x1:0,
-    x2:400};
+var celSize = 15;
+var mapSize = 20;
 
-y = {y1:0,
-    y2:400};
+for (var r=0, y=0; r<mapSize; r++, y +=celSize){
 
-ctx.beginPath();
-ctx.moveTo(x.x1, y.y1);
-ctx.lineTo(x.x2, y.y2);
-ctx.stroke();
+    for (var c=0 , x=0; c<mapSize; c++, x +=celSize){
+        ctx.strokeRect( x, y, celSize, celSize);
+    }
+}
 
-ctx.beginPath();
-ctx.moveTo(x.x2, y.y1);
-ctx.lineTo(x.x1, y.y2);
-ctx.stroke();
+$(this).on('click', function(){
+    var cursorX = window.event.pageX;
+    var cursorY = window.event.pageY;
+    console.log("x " + cursorX +", y" + cursorY);
+})
